@@ -1,0 +1,30 @@
+<nav class="navbar bg-dark">
+  <h1><a routerLink="">Computer equipment</a></h1>
+    <ul *ngIf="authService.isAuthenticated();else signin">
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'bookfunds']">Book funds</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'books']">Books</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'authors']">Authors</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'libraries']">Libraries</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'publishers']">Publishers</a>
+      </li>
+      <li routerLinkActive="active" >
+        <a [routerLink]="['/admin', 'genres']">Genres</a>
+      </li>
+      <li routerLinkActive="active" >
+        <a href="" (click)="logout($event)">Sign out</a>
+      </li>
+    </ul>
+</nav>
+
+<ng-template #signin>
+  <a [routerLink]="['/login']">Sign in</a>
+</ng-template>
