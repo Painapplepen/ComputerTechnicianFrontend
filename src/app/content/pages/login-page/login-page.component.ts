@@ -34,6 +34,10 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  register() {
+    this.router.navigate(['/register']);
+  }
+
   submit() {
     if (this.form.invalid) {
       return;

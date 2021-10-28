@@ -3,6 +3,12 @@ export interface UserForAuthentication{
   password: string
 }
 
+export interface UserForAuthorization{
+  email: string
+  userName: string
+  password: string
+}
+
 export interface ServerAuthResponse{
   token: string
   minutesExpires: number

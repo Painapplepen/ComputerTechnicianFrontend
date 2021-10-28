@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { ServerAuthResponse, UserForAuthentication } from '../interfaces/interfaces';
+import { ServerAuthResponse, UserForAuthentication, UserForAuthorization } from '../interfaces/interfaces';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -35,6 +35,10 @@ export class AuthService {
           tap(this.setToken),
           catchError(this.handleError.bind(this))
         );
+    }
+
+    register(user: UserForAuthorization): Observable<any> {
+      return this.http.post(`${this.pathBase}auth`, user);
     }
 
     logout() {

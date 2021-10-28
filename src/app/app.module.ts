@@ -7,10 +7,12 @@ import { HomePageComponent } from './content/pages/home-page/home-page.component
 import { LoginPageComponent } from './content/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './content/pages/register-page/register-page.component';
 import { SpinnerComponent } from './content/layout/spinner/spinner.component';
-import { PagesComponent } from './content/pages/pages.component';
 import { FooterComponent } from './content/layout/footer/footer.component';
 import { HeaderComponent } from './content/layout/header/header.component';
 import { PaginationComponent } from './content/layout/pagination/pagination.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,17 @@ import { PaginationComponent } from './content/layout/pagination/pagination.comp
     LoginPageComponent,
     RegisterPageComponent,
     SpinnerComponent,
-    PagesComponent,
     FooterComponent,
     HeaderComponent,
     PaginationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

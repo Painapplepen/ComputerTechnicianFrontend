@@ -1,0 +1,22 @@
+form {
+  max-width: 400px;
+  margin: 150px auto;
+}
+
+
+#login {
+  display: inline-block;
+  background: var(--dark-color);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-left: 173px;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+}
+
+#login:hover {
+  opacity: 0.8;
+}

@@ -1,4 +1,4 @@
-v<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <h2>Log in</h2>
 
   <div class="alert alert-danger" *ngIf="authService.error$ | async as error">{{ error }}</div>
@@ -25,6 +25,8 @@ v<form class="card" [formGroup]="form" (ngSubmit)="submit()">
           </small>
       </div>
   </div>
-
-  <button type="submit" class="btn btn-dark" [disabled]="form.invalid || submitted">Log in</button>
+  <div>
+    <button type="submit" class="btn btn-dark" [disabled]="form.invalid || submitted">Log in</button>
+    <input id="register" type="button" value="Register" (click)="register()"/>
+  </div>
 </form>
