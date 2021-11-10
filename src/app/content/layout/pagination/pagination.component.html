@@ -1,1 +1,5 @@
-<div style="width: 80px; margin: auto;"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+<div class="pagination">
+  <a [class.disabled]="isFirstDisabled" (click)="goToFirstPage()">«</a>
+  <a>{{currentPage + 1}}</a>
+  <a [class.disabled]="isLastDisabled" (click)="goToSecondPage()">»</a>
+</div>

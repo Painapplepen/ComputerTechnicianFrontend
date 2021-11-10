@@ -3,12 +3,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { ServerAuthResponse, UserForAuthentication, UserForAuthorization } from '../interfaces/interfaces';
+import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
     public error$: Subject<string> = new Subject<string>();
-    public pathBase: string = "https://localhost:5001/api/";
     constructor(private http: HttpClient) {}
 
     get token(): string {
@@ -30,7 +30,7 @@ export class AuthService {
     }
 
     login(user: UserForAuthentication): Observable<any> {
-      return this.http.post(`${this.pathBase}auth`, user)
+      return this.http.post(`${environment.serverUrl}auth/login`, user)
         .pipe(
           tap(this.setToken),
           catchError(this.handleError.bind(this))
@@ -38,7 +38,7 @@ export class AuthService {
     }
 
     register(user: UserForAuthorization): Observable<any> {
-      return this.http.post(`${this.pathBase}auth`, user);
+      return this.http.post(`${environment.serverUrl}auth/register`, user);
     }
 
     logout() {
@@ -60,7 +60,7 @@ export class AuthService {
       const expiresDate = new Date(new Date().getTime() + 60 * 60 * 1000);
       localStorage.setItem('jwt-token', response.token);
       localStorage.setItem('jwt-token-exp', expiresDate.toString());
-      localStorage.setItem('jwt-roles', response.roles);
+      localStorage.setItem('jwt-roles', response.role);
     }
 
     public isAdmin(): boolean{
