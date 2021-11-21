@@ -11,7 +11,7 @@ export class ClientGuard implements CanActivate {
     private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean | Promise<boolean> {
-    if (this.authService.isUser()) return true;
+    if (this.authService.isUser() || this.authService.isAdmin()) return true;
     else {
       this.router.navigate(['']);
       return false;
