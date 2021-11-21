@@ -7,6 +7,11 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { SupplierPageComponent } from './supplier-page/supplier-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { EditManafactureComponent } from "./manafacture-page/edit-manafacture/edit-manafacture.component";
+import { EditProductComponent } from './product-page/edit-product/edit-product.component';
+import { EditOrderComponent } from './order-page/edit-order/edit-order.component';
+import { EditSupplierComponent } from './supplier-page/edit-supplier/edit-supplier.component';
+import { EditUserComponent } from './user-page/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { UserPageComponent } from './user-page/user-page.component';
     ProductPageComponent,
     ProfilePageComponent,
     SupplierPageComponent,
-    UserPageComponent
+    UserPageComponent,
+    EditManafactureComponent,
+    EditProductComponent,
+    EditOrderComponent,
+    EditSupplierComponent,
+    EditUserComponent
   ],
   imports: [
     PagesRoutingModule
