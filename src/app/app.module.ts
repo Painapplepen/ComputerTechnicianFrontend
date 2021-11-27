@@ -11,8 +11,11 @@ import { HeaderComponent } from './content/layout/header/header.component';
 import { PaginationComponent } from './content/layout/pagination/pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthInterseptor } from './core/auth/auth.interseptor';
+import { AuthService } from './core/auth/auth.service';
+import { AuthGuard } from './core/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterseptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

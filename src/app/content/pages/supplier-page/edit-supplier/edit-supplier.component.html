@@ -1,1 +1,51 @@
-<p>edit-supplier works!</p>
+<div style="caption-side: top;" class="text-center">
+    Supplier
+  </div>
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-control" [ngClass]="{invalid: form.get('supplierName').touched && form.get('supplierName').invalid}">
+      <label for="supplierName">Name: </label>
+      <input id="supplierName" type="text" formControlName="supplierName">
+      <div class="validation" *ngIf="form.get('supplierName').touched && form.get('supplierName').invalid">
+          <small *ngIf="form.get('supplierName').errors.required">Enter name.</small>
+          <small *ngIf="form.get('supplierName').errors.maxlength">
+              Name length must not be more than {{form.get('supplierName').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('supplierName').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('supplierAddress').touched && form.get('supplierAddress').invalid}">
+      <label for="supplierAddress">Address: </label>
+      <input id="supplierAddress" type="text" formControlName="supplierAddress">
+      <div class="validation" *ngIf="form.get('supplierAddress').touched && form.get('supplierAddress').invalid">
+          <small *ngIf="form.get('supplierAddress').errors.required">Enter address.</small>
+          <small *ngIf="form.get('supplierAddress').errors.maxlength">
+              Address length must not be more than {{form.get('supplierAddress').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('supplierAddress').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('supplierCity').touched && form.get('supplierCity').invalid}">
+      <label for="supplierCity">City: </label>
+      <input id="supplierCity" type="text" formControlName="supplierCity">
+      <div class="validation" *ngIf="form.get('supplierCity').touched && form.get('supplierCity').invalid">
+          <small *ngIf="form.get('supplierCity').errors.required">Enter city.</small>
+          <small *ngIf="form.get('supplierCity').errors.maxlength">
+              City length must not be more than {{form.get('supplierCity').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('supplierCity').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('supplierCountry').touched && form.get('supplierCountry').invalid}">
+        <label for="supplierCountry">Country: </label>
+        <input id="supplierCountry" type="text" formControlName="supplierCountry">
+        <div class="validation" *ngIf="form.get('supplierCountry').touched && form.get('supplierCountry').invalid">
+            <small *ngIf="form.get('supplierCountry').errors.required">Enter country.</small>
+            <small *ngIf="form.get('supplierCountry').errors.maxlength">
+                Country length must not be more than {{form.get('supplierCountry').errors.maxlength.requiredLength}}.
+                Actual length is {{form.get('supplierCountry').errors.maxlength.actualLength}}.
+            </small>
+        </div>
+      </div>
+    <button type="submit" class="btn btn-dark" [disabled]="form.invalid || submitted">Save</button>
+  </form>
+  

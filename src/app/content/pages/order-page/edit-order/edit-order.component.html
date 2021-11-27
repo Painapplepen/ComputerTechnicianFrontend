@@ -1,1 +1,50 @@
-<p>edit-order works!</p>
+<div style="caption-side: top;" class="text-center">
+    Order
+  </div>
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-control" [ngClass]="{invalid: form.get('orderStatus').touched && form.get('orderStatus').invalid}">
+      <label for="orderStatus">Status: </label>
+      <input id="orderStatus" type="text" formControlName="orderStatus">
+      <div class="validation" *ngIf="form.get('orderStatus').touched && form.get('orderStatus').invalid">
+          <small *ngIf="form.get('orderStatus').errors.required">Enter name.</small>
+          <small *ngIf="form.get('orderStatus').errors.maxlength">
+              Name length must not be more than {{form.get('orderStatus').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('orderStatus').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('orderDate').touched && form.get('orderDate').invalid}">
+      <label for="orderDate">Date: </label>
+      <input id="orderDate" type="text" formControlName="orderDate">
+      <div class="validation" *ngIf="form.get('orderDate').touched && form.get('orderDate').invalid">
+          <small *ngIf="form.get('orderDate').errors.required">Enter date.</small>
+          <small *ngIf="form.get('orderDate').errors.maxlength">
+              Date length must not be more than {{form.get('orderDate').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('orderDate').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('orderTime').touched && form.get('orderTime').invalid}">
+      <label for="orderTime">Time: </label>
+      <input id="orderTime" type="text" formControlName="orderTime">
+      <div class="validation" *ngIf="form.get('orderTime').touched && form.get('orderTime').invalid">
+          <small *ngIf="form.get('orderTime').errors.required">Enter time.</small>
+          <small *ngIf="form.get('orderTime').errors.maxlength">
+              Time length must not be more than {{form.get('orderTime').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('orderTime').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('manufacture').touched && form.get('manufacture').invalid}">
+        <label for="manufacture">Manufacture: </label>
+        <select formControlName="manufacture">
+          <option *ngFor="let manufacture of manufacturs$" [value]="manufacture.id">{{manufacture.name}}</option>
+        </select>
+        <div class="validation" *ngIf="form.get('manufacture').touched && form.get('manufacture').invalid">
+            <small *ngIf="form.get('manufacture').errors.required">Select manufacture.</small>
+        </div>
+      </div>
+    <button type="submit" class="btn btn-dark" [disabled]="form.invalid || submitted">Save</button>
+  </form>
+  
+  

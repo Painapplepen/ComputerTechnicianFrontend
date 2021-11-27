@@ -1,1 +1,33 @@
-<p>supplier-page works!</p>
+<div class="home-page-card">
+    <div style="caption-side: top;" class="text-center">
+        Suppliers
+    </div>
+    <div class="home-table" *ngIf="suppliers$; else loading">
+      <table>
+        <tr>
+          <th scope="col">Name<fa-icon [icon]="faLongArrowAltDown" style="margin: 5px;"></fa-icon></th>
+          <th scope="col">Address<fa-icon [icon]="faLongArrowAltDown" style="margin: 5px;"></fa-icon></th>
+          <th scope="col">City<fa-icon [icon]="faLongArrowAltDown" style="margin: 5px;"></fa-icon></th>
+          <th scope="col">Country<fa-icon [icon]="faLongArrowAltDown" style="margin: 5px;"></fa-icon></th>
+          <th scope="col"(click)="addItem()"><fa-icon [icon]="faPlus" style="margin: 5px;"></fa-icon></th>
+        </tr>
+        <tr *ngFor="let supplier of suppliers$">
+          <td>{{supplier.name}}</td>
+          <td>{{supplier.address}}</td>
+          <td>{{supplier.city}}</td>
+          <td>{{supplier.country}}</td>
+          <td><fa-icon [icon]="faEdit" style="margin: 5px;" (click)="editItem(supplier)"></fa-icon>
+            <fa-icon [icon]="faTrashAlt" style="margin: 5px;" (click)="deleteItem(supplier)"></fa-icon>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="home-table-search">
+      <div class="home-table-search-item"><button type="submit" class="btn btn-dark">Back</button></div>
+      <div class="home-table-search-item"><button type="submit" class="btn btn-dark">Next</button></div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <app-spinner></app-spinner>
+  </ng-template>
+  

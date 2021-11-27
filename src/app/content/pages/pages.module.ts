@@ -12,6 +12,13 @@ import { EditProductComponent } from './product-page/edit-product/edit-product.c
 import { EditOrderComponent } from './order-page/edit-order/edit-order.component';
 import { EditSupplierComponent } from './supplier-page/edit-supplier/edit-supplier.component';
 import { EditUserComponent } from './user-page/edit-user/edit-user.component';
+import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { AuthInterseptor } from "src/app/core/auth/auth.interseptor";
+import { AuthService } from "src/app/core/auth/auth.service";
+import { AuthGuard } from "src/app/core/guard/auth.guard";
 
 @NgModule({
   declarations: [
@@ -29,8 +36,14 @@ import { EditUserComponent } from './user-page/edit-user/edit-user.component';
     EditUserComponent
   ],
   imports: [
-    PagesRoutingModule
+    PagesRoutingModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
   ],
-  providers: []
+  providers: [
+    
+  ]
 })
 export class PagesModule { }

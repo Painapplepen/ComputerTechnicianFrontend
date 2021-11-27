@@ -21,11 +21,11 @@ const routes: Routes = [
     path: "",
     component: PagesComponent,
     children: [
-      {path: "", redirectTo: "", pathMatch: "full"},
-      {path: "manafacture", component: ManafacturePageComponent, canActivate: [AdminGuard]},
-      {path: "edit-manafacture", component: EditManafactureComponent, canActivate: [AdminGuard]},
+      {path: "", redirectTo: "/admin/product", pathMatch: "full"},
+      {path: "manufacture", component: ManafacturePageComponent, canActivate: [AdminGuard]},
+      {path: "edit-manufacture", component: EditManafactureComponent, canActivate: [AdminGuard]},
       {path: "product", component: ProductPageComponent, canActivate: [AdminGuard]},
-      {path: "edit=product", component: EditProductComponent, canActivate: [AdminGuard]},
+      {path: "edit-product", component: EditProductComponent, canActivate: [AdminGuard]},
       {path: "order", component: OrderPageComponent, canActivate: [AdminGuard]},
       {path: "edit-order", component: EditOrderComponent, canActivate: [AdminGuard]},
       {path: "supplier", component: SupplierPageComponent, canActivate: [AdminGuard]},
@@ -45,7 +45,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard, AdminGuard, ClientGuard]
 })
 export class PagesRoutingModule {
 }

@@ -1,1 +1,52 @@
-<p>edit-manafacture works!</p>
+<div style="caption-side: top;" class="text-center">
+    Manafacture
+  </div>
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-control" [ngClass]="{invalid: form.get('manafactureName').touched && form.get('manafactureName').invalid}">
+      <label for="manafactureName">Name: </label>
+      <input id="manafactureName" type="text" formControlName="manafactureName">
+      <div class="validation" *ngIf="form.get('manafactureName').touched && form.get('manafactureName').invalid">
+          <small *ngIf="form.get('manafactureName').errors.required">Enter name.</small>
+          <small *ngIf="form.get('manafactureName').errors.maxlength">
+              Name length must not be more than {{form.get('manafactureName').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('manafactureName').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('manafactureAddress').touched && form.get('manafactureAddress').invalid}">
+      <label for="manafactureAddress">Address: </label>
+      <input id="manafactureAddress" type="text" formControlName="manafactureAddress">
+      <div class="validation" *ngIf="form.get('manafactureAddress').touched && form.get('manafactureAddress').invalid">
+          <small *ngIf="form.get('manafactureAddress').errors.required">Enter address.</small>
+          <small *ngIf="form.get('manafactureAddress').errors.maxlength">
+              Address length must not be more than {{form.get('manafactureAddress').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('manafactureAddress').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('manafactureCity').touched && form.get('manafactureCity').invalid}">
+      <label for="manafactureCity">City: </label>
+      <input id="manafactureCity" type="text" formControlName="manafactureCity">
+      <div class="validation" *ngIf="form.get('manafactureCity').touched && form.get('manafactureCity').invalid">
+          <small *ngIf="form.get('manafactureCity').errors.required">Enter city.</small>
+          <small *ngIf="form.get('manafactureCity').errors.maxlength">
+              City length must not be more than {{form.get('manafactureCity').errors.maxlength.requiredLength}}.
+              Actual length is {{form.get('manafactureCity').errors.maxlength.actualLength}}.
+          </small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('manafactureCountry').touched && form.get('manafactureCountry').invalid}">
+        <label for="manafactureCountry">Country: </label>
+        <input id="manafactureCountry" type="text" formControlName="manafactureCountry">
+        <div class="validation" *ngIf="form.get('manafactureCountry').touched && form.get('manafactureCountry').invalid">
+            <small *ngIf="form.get('manafactureCountry').errors.required">Enter country.</small>
+            <small *ngIf="form.get('manafactureCountry').errors.maxlength">
+                Country length must not be more than {{form.get('manafactureCountry').errors.maxlength.requiredLength}}.
+                Actual length is {{form.get('manafactureCountry').errors.maxlength.actualLength}}.
+            </small>
+        </div>
+      </div>
+    <button type="submit" class="btn btn-dark" [disabled]="form.invalid || submitted">Save</button>
+  </form>
+  
+  

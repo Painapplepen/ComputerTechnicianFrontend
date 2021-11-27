@@ -1,1 +1,56 @@
-<p>product-page works!</p>
+<div class="home-page-card">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="home-table-search">
+        <div>
+          <select formControlName="selectType">
+            <option *ngFor="let select of selector" [value]="select">{{select}}</option>
+          </select>
+        </div>
+        <div class="home-table-search-item"><input type="text" formControlName="inputValue"></div>
+        <div class="home-table-search-item"><button type="submit" class="btn btn-dark">Search</button></div>
+      </div>
+    </form>
+    <div style="caption-side: top;" class="text-center">
+      Computer equipment
+    </div>
+    <div class="home-table" *ngIf="items$; else loading">
+      <table>
+          <tr>
+            <th scope="col" (click)="filter('name')">Name<fa-icon [icon]="icons.name" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('processor')">Processor<fa-icon [icon]="icons.processor" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('vidioCard')">Vidio card<fa-icon [icon]="icons.vidioCard" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('memoryCapacity')">Memory<fa-icon [icon]="icons.memoryCapacity" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('driveConfiguration')">Configuration<fa-icon [icon]="icons.driveConfiguration" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('screenDiagonal')">Diagonal<fa-icon [icon]="icons.screenDiagonal" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('screenResolution')">Resolution<fa-icon [icon]="icons.screenResolution" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('cost')">Cost<fa-icon [icon]="icons.cost" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('amount')">Amount<fa-icon [icon]="icons.amount" style="margin: 5px;"></fa-icon></th>
+            <th scope="col" (click)="filter('inStock')">InStock<fa-icon [icon]="icons.inStock" style="margin: 5px;"></fa-icon></th>
+            <th scope="col"(click)="addItem()"><fa-icon [icon]="faPlus" style="margin: 5px;"></fa-icon></th>
+        </tr>
+          <tr *ngFor="let item of items$">
+            <td>{{item.name}}</td>
+            <td>{{item.processor}}</td>
+            <td>{{item.vidioCard}}</td>
+            <td>{{item.memoryCapacity}}</td>
+            <td>{{item.driveConfiguration}}</td>
+            <td>{{item.screenDiagonal}}</td>
+            <td>{{item.screenResolution}}</td>
+            <td>{{item.cost}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.inStock}}</td>
+            <td><fa-icon [icon]="faEdit" style="margin: 5px;" (click)="editItem(item)"></fa-icon>
+                <fa-icon [icon]="faTrashAlt" style="margin: 5px;" (click)="deleteItem(item)"></fa-icon>
+            </td>
+          </tr>
+      </table>
+      <div class="home-table-search">
+        <app-pagination (changePage)="changePage($event)" [totalPages]="count" [currentPage]="currentPage"></app-pagination>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <app-spinner></app-spinner>
+  </ng-template>
+  

@@ -1,1 +1,33 @@
-<p>user-page works!</p>
+<div class="home-page-card">
+    <div style="caption-side: top;" class="text-center">
+        Users
+    </div>
+    <div class="home-table" *ngIf="users$; else loading">
+      <table>
+        <tr>
+          <th scope="col">User name<fa-icon [icon]="faLongArrowAltDown" style="margin: 5px;"></fa-icon></th>
+          <th scope="col">Email<fa-icon [icon]="faLongArrowAltDown" style="margin: 5px;"></fa-icon></th>
+          <th scope="col">Role<fa-icon [icon]="faLongArrowAltDown" style="margin: 5px;"></fa-icon></th>
+          <th scope="col">BasketSize<fa-icon [icon]="faLongArrowAltDown" style="margin: 5px;"></fa-icon></th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let user of users$">
+          <td>{{user.userName}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.role}}</td>
+          <td>{{user.basketSize}}</td>
+          <td>
+            <fa-icon [icon]="faTrashAlt" style="margin: 5px;" (click)="deleteItem(user)"></fa-icon>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="home-table-search">
+      <div class="home-table-search-item"><button type="submit" class="btn btn-dark">Back</button></div>
+      <div class="home-table-search-item"><button type="submit" class="btn btn-dark">Next</button></div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <app-spinner></app-spinner>
+  </ng-template>
+  
